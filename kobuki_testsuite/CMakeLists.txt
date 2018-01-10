@@ -1,6 +1,12 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(kobuki_testsuite)
-find_package(catkin REQUIRED COMPONENTS kobuki_driver kobuki_node std_msgs sensor_msgs geometry_msgs message_generation)
+find_package(ament_cmake REQUIRED)
+find_package(kobuki_driver REQUIRED)
+find_package(kobuki_node REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(message_generation REQUIRED)
 
 catkin_python_setup()
 catkin_package()
@@ -21,5 +27,5 @@ install(PROGRAMS scripts/inf_rotation.py
                  scripts/test_output.py
                  scripts/test_safewandering.py
                  scripts/test_translation.py
-        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+        DESTINATION bin
 )

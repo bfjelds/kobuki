@@ -1,43 +1,55 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(kobuki_random_walker)
-find_package(catkin REQUIRED COMPONENTS ecl_threads
-                                        geometry_msgs
-                                        kobuki_msgs
-                                        nodelet
-                                        pluginlib
-                                        roscpp
-                                        std_msgs
-                                        yocs_controllers)
-
-catkin_package(INCLUDE_DIRS include
-               LIBRARIES kobuki_random_walker_nodelet
-               CATKIN_DEPENDS ecl_threads
-                              geometry_msgs
-                              kobuki_msgs
-                              nodelet
-                              pluginlib
-                              roscpp
-                              std_msgs
-                              yocs_controllers)
+find_package(ament_cmake REQUIRED)
+find_package(ecl_threads REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(kobuki_msgs REQUIRED)
+find_package(pluginlib REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(yocs_controllers REQUIRED)
 
 include_directories(include
-                    ${catkin_INCLUDE_DIRS})
+  ${ecl_threads_INCLUDE_DIRS}
+  ${geometry_msgs_INCLUDE_DIRS}
+  ${kobuki_msgs_INCLUDE_DIRS}
+  ${pluginlib_INCLUDE_DIRS}
+  ${rclcpp_INCLUDE_DIRS}
+  ${std_msgs_INCLUDE_DIRS}
+  ${yocs_controllers_INCLUDE_DIRS}
+  )
 
 add_library(kobuki_random_walker_nodelet src/nodelet.cpp)
-add_dependencies(kobuki_random_walker_nodelet ${catkin_EXPORTED_TARGETS})
-target_link_libraries(kobuki_random_walker_nodelet ${catkin_LIBRARIES})
+add_dependencies(kobuki_random_walker_nodelet
+  ${ecl_threads_EXPORTED_TARGETS}
+  ${geometry_msgs_EXPORTED_TARGETS}
+  ${kobuki_msgs_EXPORTED_TARGETS}
+  ${pluginlib_EXPORTED_TARGETS}
+  ${rclcpp_EXPORTED_TARGETS}
+  ${std_msgs_EXPORTED_TARGETS}
+  ${yocs_controllers_EXPORTED_TARGETS}
+  )
+target_link_libraries(kobuki_random_walker_nodelet
+  ${ecl_threads_LIBRARIES}
+  ${geometry_msgs_LIBRARIES}
+  ${kobuki_msgs_LIBRARIES}
+  ${pluginlib_LIBRARIES}
+  ${rclcpp_LIBRARIES}
+  ${std_msgs_LIBRARIES}
+  ${yocs_controllers_LIBRARIES}
+  )
 
 install(TARGETS kobuki_random_walker_nodelet
-        DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
+        DESTINATION lib)
         
 install(DIRECTORY include/${PROJECT_NAME}/
-        DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
+        DESTINATION include)
 
 install(DIRECTORY param
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+        DESTINATION share)
 
 install(DIRECTORY plugins
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+        DESTINATION share)
 
 install(DIRECTORY launch
-        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+        DESTINATION share)

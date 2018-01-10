@@ -1,4 +1,5 @@
-<package>
+<?xml version="1.0"?>
+<package format="2">
   <name>kobuki_random_walker</name>
   <version>0.7.4</version>
   <description>
@@ -11,28 +12,27 @@
   <url type="repository">https://github.com/yujinrobot/kobuki</url>
   <url type="website">http://ros.org/wiki/kobuki_random_walker</url>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <build_depend>ecl_threads</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>kobuki_msgs</build_depend>
-  <build_depend>nodelet</build_depend>
   <build_depend>pluginlib</build_depend>
-  <build_depend>roscpp</build_depend>
+  <build_depend>rclcpp</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>yocs_controllers</build_depend>
 
-  <run_depend>ecl_threads</run_depend>
-  <run_depend>geometry_msgs</run_depend>
-  <run_depend>kobuki_msgs</run_depend>
-  <run_depend>nodelet</run_depend>
-  <run_depend>pluginlib</run_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>std_msgs</run_depend>
-  <run_depend>yocs_controllers</run_depend>
-  <run_depend>yocs_cmd_vel_mux</run_depend>
+  <exec_depend>ecl_threads</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>kobuki_msgs</exec_depend>
+  <exec_depend>pluginlib</exec_depend>
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>yocs_controllers</exec_depend>
+  <exec_depend>yocs_cmd_vel_mux</exec_depend>
   
   <export>
+    <build_type>ament_cmake</build_type>
     <nodelet plugin="${prefix}/plugins/nodelet_plugins.xml"/>
   </export>
 </package>

@@ -1,9 +1,7 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 
 project(kobuki_rapps)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake REQUIRED)
 
-catkin_package()
-
-install(DIRECTORY rapps DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY rapps DESTINATION share)

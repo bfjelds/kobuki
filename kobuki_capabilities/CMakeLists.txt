@@ -1,10 +1,8 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 
 project(kobuki_capabilities)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake REQUIRED)
 
-catkin_package()
-
-install(DIRECTORY interfaces DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-install(DIRECTORY providers DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY interfaces DESTINATION share)
+install(DIRECTORY providers DESTINATION share)
